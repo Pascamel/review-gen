@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Review Generator</title>
+
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+	<script type="text/javascript" src="./reviewgen.js"></script>
+
+	<style>
+		html {
+			background: url(rg-bg.jpg) no-repeat center center fixed;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			height: 100%;
+		}
+		body {
+			background: rgba(255, 255, 255, 0.8);
+			height: 100%;
+			padding-bottom: 71px;
+		}
+		/*.paddingtop20 {
+			padding-top: 20px;
+		}
+		.paddingbottom20 {
+			padding-bottom: 20px
+		}*/
+		.margintop30 {
+			margin-top: 30px
+		}
+		.fill {
+			min-height: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Airbnb Review Generator</a>
+			</div>
+			<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+				<!--<ul class="nav navbar-nav">-->
+					<!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
+					<!--<li><a href="#">Link</a></li>-->
+				<!--</ul>-->
+			<!--</div>-->
+		</div>
+	</nav>
+	<div class="container fill" style="height:100%">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 style="margin-bottom: 10px;display:block">
+					Tired of writing reviews about your guests on Airbnb, HomeAway or VRBO? We are here to help!
+				</h1>
+				<h4 class="margintop30">
+					We created this review generator to make it easy for hosts to write reviews about their guests.
+					So if you are lacking inspiration, or just don’t have the time to come up with new reviews
+					every time your rent your property, try our review generator!
+				</h4>
+				<span class="margintop30">
+					Anything you’d like us to add or make us better? Tell us what you think <a href="https://portal.prodpad.com/24395">here</a>!
+				</span>
+
+			</div>
+		</div>
+
+		<!--
+		<div class="row paddingtop20 paddingbottom20">
+			<div class="col-xs-12" style="height:90px">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<ins class="adsbygoogle"
+				     style="display:inline-block;width:728px;height:90px"
+				     data-ad-client="ca-pub-2413748327736247"
+				     data-ad-slot="5825199616"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+		-->
+
+		<div class="row">
+			<div class="col-xs-12">
+				<h4>About the guest</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-sm-3 col-xs-12">
+				<span style="font-size: 12px">Gender</span>
+				<select class="form-control" id="guest_type">
+					<option value="0" disabled selected hidden>Select a gender</option>
+					<option value="1">Male</option>
+					<option value="2">Female</option>
+					<option value="9" disabled="disabled">──────────</option>
+					<option value="3">Group</option>
+				</select>
+			</div>
+			<div class="col-sm-3">
+				<span style="font-size: 12px">Name(s)</span>
+				<input type="text" class="form-control" id="guest_name" />
+			</div>
+		</div>
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12">
+				<h4>Guest attributes</h4>
+				<label style="font-weight: normal; padding-right:15px">
+					<input type="checkbox" id="guest_cleanliness"> Clean
+				</label>
+				<label style="font-weight: normal; padding-right:15px">
+					<input type="checkbox" id="guest_communication"> Easy to communicate with
+				</label>
+				<label style="font-weight: normal; padding-right:15px">
+					<input type="checkbox" id="guest_friendliness"> Friendly
+				</label>
+				<label style="font-weight: normal">
+					<input type="checkbox" id="guest_respect"> Respectful
+				</label>
+			</div>
+		</div>
+		<div class="row" style="padding-top: 20px; padding-bottom: 20px">
+			<div class="col-xs-12">
+				<a id="generateReview" class="btn btn-success">Generate my review</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<textarea rows="8" id="reviewGenerated" style="min-width: 100%"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<button id="copyReview" class="btn btn-primary">Copy to clipboard</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+<!-- 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2413748327736247"
+				     data-ad-slot="5406397210"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+-->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-93097406-1', 'auto');
+  ga('send', 'pageview');
+</script>
