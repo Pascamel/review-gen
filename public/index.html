@@ -1,174 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>Review Generator</title>
-
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
-	<script type="text/javascript" src="./reviewgen.js"></script>
-
-	<style>
-		html {
-			background: url(rg-bg.jpg) no-repeat center center fixed;
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
-			height: 100%;
-		}
-		body {
-			background: rgba(255, 255, 255, 0.8);
-			height: 100%;
-			padding-bottom: 71px;
-		}
-		/*.paddingtop20 {
-			padding-top: 20px;
-		}
-		.paddingbottom20 {
-			padding-bottom: 20px
-		}*/
-		.margintop30 {
-			margin-top: 30px
-		}
-		.fill {
-			min-height: 100%;
-			height: 100%;
-		}
-	</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Generate Airbnb reviews for your guests in one click. Try it today."/>
+  <meta property="og:url" content="https://www.review-generator.com" />
+  <meta property="og:title" content="Review Generator" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Generate Airbnb reviews for your guests in one click." />
+  <meta property="og:image" content="https://www.review-generator.com/rg-bg1.jpg" />
+  <meta name="google-site-verification" content="cZDO0hBa087i1FKMUkpE30RiXfBpUZmNxR2sbGYnIAs" />
+  <title>Review Generator</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="./reviewgen.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script type="text/javascript" src="./reviewgen.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+  <script type="text/javascript" src="./firebase.js"></script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({google_ad_client: "ca-pub-2413748327736247", enable_page_level_ads: true});</script>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-static-top">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Airbnb Review Generator</a>
-			</div>
-			<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-				<!--<ul class="nav navbar-nav">-->
-					<!--<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>-->
-					<!--<li><a href="#">Link</a></li>-->
-				<!--</ul>-->
-			<!--</div>-->
-		</div>
-	</nav>
-	<div class="container fill" style="height:100%">
-		<div class="row">
-			<div class="col-xs-12">
-				<h1 style="margin-bottom: 10px;display:block">
-					Tired of writing reviews about your guests on Airbnb, HomeAway or VRBO? We are here to help!
-				</h1>
-				<h4 class="margintop30">
-					We created this review generator to make it easy for hosts to write reviews about their guests.
-					So if you are lacking inspiration, or just don’t have the time to come up with new reviews
-					every time your rent your property, try our review generator!
-				</h4>
-				<span class="margintop30">
-					Anything you’d like us to add or make us better? Tell us what you think <a href="https://portal.prodpad.com/24395">here</a>!
-				</span>
+  <div class="container-fluid container-image">
+    <div class="container">
+      <div class="row row-title">
+        <div class="col-md-10 col-md-offset-2 col-sm-12">
+          <h1>Review your guests</h1>
+        </div>
+        <div class="col-md-10 col-md-offset-2 col-sm-12" style="margin-bottom: 20px">
+          Generate a review for your Airbnb, HomeAway or VRBO guests.
+        </div>
+      </div>
+      <div class="row row-input">
+        <div class="col-md-2 col-md-offset-2 col-sm-3 col-xs-12">
+          <div id="guest_type_container">
+            <select class="form-control" id="guest_type">
+              <option value="0" disabled selected hidden>Select gender</option>
+              <option value="10" disabled="disabled">Select gender</option>
+              <option value="3">Group</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+            </select>
+            <!-- <i class="fa fa-chevron-down"></i> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <input type="text" class="form-control" id="guest_name" placeholder="Enter guests name" />
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-12">
+          <a id="generateReview" class="btn btn-primary btn-block">Generate</a>
+        </div>
+      </div>
 
-			</div>
-		</div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 margintop10">
+          <a target="_blank" href="https://goo.gl/forms/E7zV9DyxbD1hpqWy1" id="feedback1">Have feedback? Please tell us what you think</a>
+        </div>
+      </div>
 
-		<!--
-		<div class="row paddingtop20 paddingbottom20">
-			<div class="col-xs-12" style="height:90px">
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<ins class="adsbygoogle"
-				     style="display:inline-block;width:728px;height:90px"
-				     data-ad-client="ca-pub-2413748327736247"
-				     data-ad-slot="5825199616"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
-		-->
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 margintop20">
+          <textarea class="form-control" rows="4" id="reviewGenerated" style="min-width: 100%"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 margintop10">
+          <button id="copyReview" class="btn btn-primary">Copy to clipboard</button>
+          <a target="_blank" href="https://goo.gl/forms/E7zV9DyxbD1hpqWy1" id="feedback2" class="pull-right">Have feedback? Please tell us what you think</a>
+        </div>
+      </div>
 
-		<div class="row">
-			<div class="col-xs-12">
-				<h4>About the guest</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-2 col-sm-3 col-xs-12">
-				<span style="font-size: 12px">Gender</span>
-				<select class="form-control" id="guest_type">
-					<option value="0" disabled selected hidden>Select a gender</option>
-					<option value="1">Male</option>
-					<option value="2">Female</option>
-					<option value="9" disabled="disabled">──────────</option>
-					<option value="3">Group</option>
-				</select>
-			</div>
-			<div class="col-sm-3">
-				<span style="font-size: 12px">Name(s)</span>
-				<input type="text" class="form-control" id="guest_name" />
-			</div>
-		</div>
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12">
-				<h4>Guest attributes</h4>
-				<label style="font-weight: normal; padding-right:15px">
-					<input type="checkbox" id="guest_cleanliness"> Clean
-				</label>
-				<label style="font-weight: normal; padding-right:15px">
-					<input type="checkbox" id="guest_communication"> Easy to communicate with
-				</label>
-				<label style="font-weight: normal; padding-right:15px">
-					<input type="checkbox" id="guest_friendliness"> Friendly
-				</label>
-				<label style="font-weight: normal">
-					<input type="checkbox" id="guest_respect"> Respectful
-				</label>
-			</div>
-		</div>
-		<div class="row" style="padding-top: 20px; padding-bottom: 20px">
-			<div class="col-xs-12">
-				<a id="generateReview" class="btn btn-success">Generate my review</a>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<textarea rows="8" id="reviewGenerated" style="min-width: 100%"></textarea>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<button id="copyReview" class="btn btn-primary">Copy to clipboard</button>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-<!-- 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<ins class="adsbygoogle"
-				     style="display:block"
-				     data-ad-client="ca-pub-2413748327736247"
-				     data-ad-slot="5406397210"
-				     data-ad-format="auto"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
--->
-			</div>
-		</div>
-	</div>
+      <i id="scrolldown" class="fa fa-3x fa-chevron-down"></i>
+      <a id="referral" href="https://www.airbnb.com/r/awi" target="_blank">
+        New to AirBnb? Sign up today!
+      </a>
+    </div>
+  </div>
+  <div class="container container-text">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-sm-12">
+        <h2 class="description-title">
+          Tired of writing reviews about your guests on Airbnb, HomeAway or VRBO? We are here to help!
+        </h2>
+        <p class="description-text">
+          Your guests just checked out, and Airbnb is asking you to write your review. You feel like you tend to repeat yourself and you don’t have time to write new reviews. Enter the guest(s) name(s), gender and click “generate” and voila. Your review is generated.
+          We created this review generator to make it easy for hosts like us to write reviews about their guests. Whether you are lacking inspiration, or just don’t have the time to come up with new reviews every time your rent your property, use our review generator!        
+        </p>  
+        <p class="description-text">
+          Learn more about “Why writing reviews for your guests matters”.
+        </p> 
+      </div>
+    </div>
+    <i id="scrollup" class="fa fa-3x fa-chevron-up"></i>
+  </div>
+  <div class="container-fluid container-separator">
+    <div class="row row-title">
+      <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+        <h1>Why writing reviews for your guests matters?</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container container-text">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-sm-12">
+        <p class="description-text">
+          Whether you are a host or guest on websites like Airbnb, HomeAway or VRBO, you probably had to write a review your guests or your host after your experience. Writing reviews has been a critical piece to the success of home-sharing websites, as the community relies on these reviews and ratings to make decisions on where to stay or who to host in their home. As a homeowner, hosting strangers can sometimes be uncomfortable. In order to host travelers in your home or rental unit, you need to make sure that guests are respectful, clean and won’t be damaging your belongings or relationship with your neighbors. This article is meant to cover why writing reviews for your guests matters to much for the home-sharing community.           
+        </p>
+        <h2 class="description-title">
+          Tell your guests what you liked about them and how they can improve
+        </h2>
+        <p class="description-text">
+          If most guests are often polite, clean and tidy, others can sometimes be more difficult to deal with. Whether you had a positive or negative experience hosting these guests, it is important to share your feedback, not only with the community, but with the guests themselves. Sharing our opinions can help all of us to be better guests and better hosts. Always make sure to write accurate review that describe your relationship with your guests.
+        </p>
+        <h2 class="description-title">
+          Help other hosts decide which guests to host
+        </h2>
+        <p class="description-text">
+          When receiving a reservation request, we hosts try to make sure guests will be respectful of our space and our experience will be seamless. To do so, we leverage past reviews to assess whether or not we feel comfortable hosting guests. Making sure that you write reviews helps the entire community to grow and have a better experience.
+        </p>
+        <h2 class="description-title">
+          Build or maintain a good relationship with your neighbors
+        </h2>
+        <p class="description-text">
+          Some of our neighbors do not always feel as strongly as we do about having travelers in their building or neighborhood. Making sure to read and write reviews to guests enable all of us to guarantee a safe and enjoyable experience.
+        </p>
+        <h2 class="description-title">
+          Become a Superhost
+        </h2>
+        <p class="description-text">
+          If you are hosting guests on Airbnb, you probably heard about the Airbnb Superhost program. This program rewards experienced hosts for creating amazing hospitality. When becoming a superhost, your listing is promoted in results, and Superhosts typically earn 22% more than other hosts (according to Airbnb), attract more guests and get access to exclusive rewards. Multiple criteria need to be fulfilled to become a superhost, including having more than 50% of reviews left for your guests. 
+        </p>
+        <h2 class="description-title">
+          Protect your bottom line and help the community 
+        </h2>
+        <p class="description-text">
+          Although hosts have different reasons to host guests like being able to stay in their home or  generating supplemental income, Airbnb often generates a substantial source of revenue. Making sure to have great guests in your place and enabling other hosts to do the same is crucial to make sure you guarantee sustainable revenue, through good relationship with your neighbors and protection of your belongings. 
+        </p>
+        <h2 class="description-title">
+          How to write a review?
+        </h2>
+        <span class="description-text" style ="display:block">
+          Follow the steps described below to submit a review. Note: After guests leave your place, you have 14 days to write a review for them. 
+        </span>
+        <span>
+          Generate the review on Review Generator 
+        </span>
+        <ol style="padding-top: 10px">
+          <li>Go to review-generator.com</li>
+          <li>Enter the guest(s) gender and name</li>
+          <li>Click on Generate</li>
+          <li>Copy the review to the clipboard</li>
+        </ol>
+        <span>
+          Go to the Airbnb website
+        </span>
+        <ol start="5" style="padding-top: 10px">
+          <li>Visit Airbnb.com or click on the Airbnb email inviting you to write a review for your last guests</li>
+          <li>Login using your email and password</li>
+          <li>Click on “Host” and then “Hosting Dashboard”</li>
+          <li>Select guests pending reviews. If none are displayed, you are all set.</li>
+        </ol>
+        <span>
+          Paste the review and select ratings
+        </span>
+        <ol start="9" style="padding-top: 10px; padding-bottom: 20px">
+          <li>Paste the review</li>
+          <li>Select a rating</li>
+          <li>Click on submit. Your review is now saved. You have until the other guest submits their review or 14 days (whichever happens first) to edit your review. </li>
+        </ol>
+        <p class="description-title">
+          Interested in trying out Airbnb?
+        </p>  
+        <span>
+          Generate side income renting your space by signing up using our <a href="https://www.airbnb.com/r/awi" target="_blank">referral link</a>. You'd rather travel? <a href="https://www.airbnb.com/c/awi" target="_blank">Sign up</a> to get up to $55 toward your first trip.
+        </span>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 <script>
