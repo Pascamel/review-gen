@@ -5,14 +5,14 @@ const cors = require('cors')({
 });
 
 const reviews = [
-  '[name] [was|was|were] [a |a |]wonderful guest[||s]. [He|She|They] left the apartment as clean and organized as it was when [He|She|They] arrived. Would definitely recommend [name] to other hosts on Airbnb!',
+  '[name] [was a|was a|were] wonderful guest[||s]. [He|She|They] left the apartment as clean and organized as it was when [He|She|They] arrived. Would definitely recommend [name] to other hosts on Airbnb!',
   'I had the pleasure to host [name]. [He|She|They] made a real effort to leave the premises as clean as when [he|she|they] arrived. Would love to have [him|her|them] back!',
   'It was a pleasure hosting [name]. [He|She|They] left the apartment clean and tidy and [was|was|were] very mindful of the place! Sincerely and warmly recommended!',
   '[name] [was a|was a|were] dream guest[||s]! The apartment was left clean and in great conditions. NO Complaints. Would be happy to have [him|her|them] as guest ANYTIME!',
   '[name] booked with us and [was an|was an|were] excellent guest[||s]. I recommend [him|her|them] to other hosts on Airbnb!',
   'Wonderful guest[||s]! [He|She|They] left the apartment in perfect shape and [was|was|were] great at communicating. Would host [him|her|them] again for sure!',
   'It was so great to have [name] staying at the apartment. [He was|She was|They were] a delight to host and I hope to have the opportunity to host [him|her|them] again someday.',
-  '[name] [was|was|were] [a |a |] great guest[||s]. I am glad [he|she|they] chose to stay with us, it was a real pleasure to host [him|her|them]. We would be happy to have [him|her|them] back and recommend [him|her|them] to other Airbnb hosts. ',
+  '[name] [was a|was a|were] great guest[||s]. I am glad [he|she|they] chose to stay with us, it was a real pleasure to host [him|her|them]. We would be happy to have [him|her|them] back and recommend [him|her|them] to other Airbnb hosts. ',
   '[name] [was|was|were] awesome to have as [a |a |]guest[||s] and did a great job on communicating on matters like check-in and check-out time. I can recommend [him|her|them] and I hope to have [him|her|them] again as [a guest|a guest|guests].',
   '[name] [was a|was a|were] fantastic guest[||s]! [He|She|They] always kept in touch before and during [his|her|their] stay. [He was|She was|They were] also very polite, tidy and quiet.',
   '[name] [was a|was a|were] wonderful guest[||s] and terrific [person|person|people]. [He was|She was|They were] really friendly and easy-going. [He was|She was|They were] very respectful of house rules.',
@@ -23,7 +23,7 @@ const reviews = [
   '[name] [was|was|were] nice! Clean and respectful also kind and friendly! Nothing to add!!! Highly recommended!',
   '[name] [was a|was a|were] lovely guest[||s] to have staying with us. [He|She|They] [was|was|were] clean and tidy, fun to talk to and respectful of our house and rules. I would welcome [name] back anytime.',
   '[name] [was a|was a|were] great guest[||s]! [He|She|They] kept the apartment clean, and respected my handful of house rules. Would love to host [him|her|them] again!',
-  '[name] [was a|was a|were] lovely guest[||s]. [He|She|They] [was|was|were] friendly, clean and respectful of my apartment. I would welcome [him|her|them] back any time and highly recommend them as guest[||s].',
+  '[name] [was a|was a|were] lovely guest[||s]. [He was|She was|They were] friendly, clean and respectful of my apartment. I would welcome [him|her|them] back any time and highly recommend them as guest[||s].',
   '[name] [was|was|were] lovely guest[||s]. [He was|She was|They were] just wonderful people and I would have [him|her|them] again.',
   '[name] [was|was|were] great guest[||s]. Communication was very good between us. [He|She|They] left the bathroom clean and ready for use, as well as the kitchen. Would welcome them back anytime.',
   '[name] [was|was|were] great guest[||s] who highly respected house rules as well as my neighborhood. Also [He|She|They] cleaned up the bedroom same as it was at check in. Highly recommended guest[||s].',
@@ -38,11 +38,11 @@ const reviews = [
   'Super great guest[||s] to host and a pleasure to have in overall. Would gladly host [him|her|them] again.',
   'It was really nice to host [name]. [He is|She is|They are] nice, friendly, communicative and independent. [He is|She is|They are] respectful of my place and keep it clean and tidy. I can highly recommended [him|her|them] to any airbnb host without any hesitation.',
   '[name] [is|is|are] very sweet and respectful. It was a pleasure to have [him|her|them] at home, and [he is|she is|they are] always welcome to come back!',
-  '[name] [was|was|were] great guest[||s]. [He|She|They] had good communication and left the house in good condition. I would welcome [him|her|them] back anytime and recommend [him|her|them] to other hosts.',
-  '[name] [was|was|were] FANTASTIC guest[||s]. I absolutely loved having [him|her|them]. If [he|she|they] [returns|returns|return] to my city I hope [he|she|they] will come back and stay with me again :-) I highly recommend to other hosts!',
+  '[name] [was a|was a|were] great guest[||s]. [He|She|They] had good communication and left the house in good condition. I would welcome [him|her|them] back anytime and recommend [him|her|them] to other hosts.',
+  '[name] [was a|was a|were] FANTASTIC guest[||s]. I absolutely loved having [him|her|them]. If [he|she|they] [returns|returns|return] to my city I hope [he|she|they] will come back and stay with me again :-) I highly recommend to other hosts!',
   '[name] [was|was|were] very friendly and polite. [He|She|They] have left everything clean and in perfect condition. Strongly recommended.',
   'Great guest[||s]. [He was|She was|They were] totally respectful of the apartment.I would love to have [him|her|them] again.',
-  '[name] [was|was|were] a wonderful guest[||s]. [He|She|They] [is|is|are] warm, always wearing a smile, and makes the home feel great! I would highly recommend [name] as a guest[||s], you\'d be lucky to have [him|her|them] . [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!'
+  '[name] [was a|was a|were] wonderful guest[||s]. [He is|She is|They are] warm, always wearing a smile, and makes the home feel great! I would highly recommend [name] as a guest[||s], you\'d be lucky to have [him|her|them]. [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!'
 ];
 
 var replaceName = function (s, name) {
