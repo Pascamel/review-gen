@@ -42,7 +42,16 @@ const reviews = [
   '[name] [was a|was a|were] FANTASTIC guest[||s]. I absolutely loved having [him|her|them]. If [he|she|they] [returns|returns|return] to my city I hope [he|she|they] will come back and stay with me again :-) I highly recommend to other hosts!',
   '[name] [was|was|were] very friendly and polite. [He has|She has|They have] left everything clean and in perfect condition. Strongly recommended.',
   'Great guest[||s]. [He was|She was|They were] totally respectful of the apartment. I would love to have [him|her|them] again.',
-  '[name] [was a|was a|were] wonderful guest[||s]. [He is|She is|They are] warm, always wearing a smile, and make[s|s|] the home feel great! I would highly recommend [name] as [a |a |]guest[||s], you\'d be lucky to have [him|her|them]. [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!'
+  '[name] [was a|was a|were] wonderful guest[||s]. [He is|She is|They are] warm, always wearing a smile, and make[s|s|] the home feel great! I would highly recommend [name] as [a |a |]guest[||s], you\'d be lucky to have [him|her|them]. [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!',
+  '[name] [was a|was a|were] very nice guest[||s]: Quiet, clean and respectful. Highly recommended. Thank you!',
+  '[name] followed the rules of the apartment well and was kind. I recommend [name] to other hosts. I welcome [him|her|them] anytime. Thank you [name].',
+  'We enjoyed hosting [name]. We had a good exchange of messages upfront. During our stay, it was nice to chat with [name] and [he was|she was|they were] respectful of the house rules.',
+  '[name] was [a |a |]great guest[||s] who kept the room clean with care for all of the appliances and amenities. We were able to communicate easily. [He is|She is|They are] a very considerate guest[||s]. Thank you [name], see you again!',
+  'It was a pleasure hosting [name]. [He is|She is|They are] very friendly and left everything exceedingly clean. I would be more than happy to have [him|her|them] stay home again in the future.',
+  'It was a pleasure hosting [name]. [He is|She is|They are] [a |a |]very lovely guest[||s]. We would welcome [him|her|them] back anytime!',
+  'thank you so much for taking good care of our listing. We would like to see you again. You will always be welcome to stay with us.',
+  '[name] [was a|was a|were] great guest[||s], easy to communicate with, clean, and super helpful. I cannot be more thankful and have no doubts in recommending [name] to any host.',
+  '[name] [is an|is an|are] amazing guest[||s]. I wish they all were like [him|her|them]. [He was|She was|They were] easy to communicate with throughout the process, [he|she|they] appreciated my personal home and my touches. [He|She|They] left my home immaculately clean. I recommend [him|her|them] to all hosts.'
 ];
 
 var replaceName = function (s, name) {
