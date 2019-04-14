@@ -42,7 +42,7 @@ const reviews = [
   '[name] [was a|was a|were] FANTASTIC guest[||s]. I absolutely loved having [him|her|them]. If [he|she|they] [returns|returns|return] to my city I hope [he|she|they] will come back and stay with me again :-) I highly recommend to other hosts!',
   '[name] [was|was|were] very friendly and polite. [He has|She has|They have] left everything clean and in perfect condition. Strongly recommended.',
   'Great guest[||s]. [He was|She was|They were] totally respectful of the apartment. I would love to have [him|her|them] again.',
-  '[name] [was a|was a|were] wonderful guest[||s]. [He is|She is|They are] warm, always wearing a smile, and make[s|s|] the home feel great! I would highly recommend [name] as a guest[||s], you\'d be lucky to have [him|her|them]. [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!'
+  '[name] [was a|was a|were] wonderful guest[||s]. [He is|She is|They are] warm, always wearing a smile, and make[s|s|] the home feel great! I would highly recommend [name] as [a |a |]guest[||s], you\'d be lucky to have [him|her|them]. [name] [is|is|are] responsible, clean, quiet, friendly, and overall wonderful! Would love to host [him|her|them] again and recommend [him|her|them] highly!'
 ];
 
 var replaceName = function (s, name) {
