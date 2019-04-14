@@ -56,8 +56,6 @@ $(document).ready(function() {
 				name: $('#guest_name').val()
 			}
 		}).then(function(result) {
-			console.log('data', result.data);
-
 			$('#feedback1').hide();
 			$('textarea#reviewGenerated').val(result.data.review);
 			$('textarea#reviewGenerated').show();
