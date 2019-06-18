@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 	$('#guest_type').val(3);
 	$('#guest_type').change(function(e) {
-		var idx = parseInt($('#guest_type').find(":selected").val());
+		var idx = parseInt($('#guest_type').find(':selected').val());
 		$('#guest_name').attr('placeholder', placeholders[idx]);
 
 		ga('send', 'event', 'Review', 'Select gender', genders[idx], 0);
@@ -29,11 +29,11 @@ $(document).ready(function() {
 	});
 
 	$('#scrolldown').click(function(e) {
-		$("html, body").stop().animate({scrollTop: ($('#scrollup').position().top - 30) + 'px'}, 1000);
+		$('html, body').stop().animate({scrollTop: ($('#scrollup').position().top - 30) + 'px'}, 1000);
 	});
 
 	$('#scrollup').click(function(e) {
-		$("html, body").stop().animate({scrollTop: 0}, 1000);
+		$('html, body').stop().animate({scrollTop: 0}, 1000);
 	});
 
 	$('textarea#reviewGenerated').hide();
@@ -41,9 +41,9 @@ $(document).ready(function() {
 	$('#feedback2').hide();
 
 	$('#generateReview').click(function(e) {
-		$("textarea#reviewGenerated").hide();
+		$('textarea#reviewGenerated').hide();
     $('button#copyReview').hide();
-		if ($('#guest_type').find(":selected").val() <= 0) {
+		if ($('#guest_type').find(':selected').val() <= 0) {
 			toastr.error('Please select your guest\'s gender.');
 			ga('send', 'event', 'Review', 'Generate Review', 'Failure (Missing gender)', 0);
 			return;
@@ -52,19 +52,17 @@ $(document).ready(function() {
 		var getReview = firebase.functions().httpsCallable('getReview');
 		getReview({
 			data: {
-				type: $('#guest_type').find(":selected").val(), 
+				type: $('#guest_type').find(':selected').val(), 
 				name: $('#guest_name').val()
 			}
 		}).then(function(result) {
-			console.log('data', result.data);
-
 			$('#feedback1').hide();
 			$('textarea#reviewGenerated').val(result.data.review);
 			$('textarea#reviewGenerated').show();
 			$('button#copyReview').show();
 			$('#feedback2').show();
 
-			var idx = parseInt($('#guest_type').find(":selected").val());
+			var idx = parseInt($('#guest_type').find(':selected').val());
 			ga('send', 'event', 'Review', 'Generate Review', 'Success (' + genders[idx] + ')', 0);
 		});
 	});
