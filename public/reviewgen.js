@@ -42,7 +42,7 @@ $(document).ready(function() {
 
 	$('#generateReview').click(function(e) {
 		$('textarea#reviewGenerated').hide();
-	    $('button#copyReview').hide();
+		$('button#copyReview').hide();
 		if ($('#guest_type').find(':selected').val() <= 0) {
 			toastr.error('Please select your guest\'s gender.');
 			ga('send', 'event', 'Review', 'Generate Review', 'Failure (Missing gender)', 0);
@@ -67,9 +67,9 @@ $(document).ready(function() {
 		});
 	});
 
-  $('#copyReview').click(function(e) {
-    $('textarea#reviewGenerated').select();
-    document.execCommand('copy');
+	$('#copyReview').click(function(e) {
+		$('textarea#reviewGenerated').select();
+		document.execCommand('copy');
 		toastr.success('Copied to clipboard!');
 		
 		ga('send', 'event', 'Review', 'Copy to clipboard', '', 0);
