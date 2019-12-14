@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>All reviews</title>
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="content"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    setTimeout(function() {
+        var getAllReviews = firebase.functions().httpsCallable('getAllReviews');
+
+        getAllReviews({}).then(function(result) {
+            var n = 1, content = '';
+
+            for (var i = 0; i < result.data.reviews.length; i++) {
+                if (i%3 === 0) {
+                    content += '<h1>';
+                    content += (i/3);
+                    content += '</h1>';
+                    content += '<ul class="list-unstyled">';
+                }
+
+                content += '<li>';
+                content += result.data.reviews[i];
+                content += '</li>';
+
+                if (i%3 === 2) {
+                    content += '</ul>';
+                }
+            }
+
+            $('#content').html(content)
+        });
+    }, 1000);
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script>
+<script type="text/javascript" src="./firebase.js"></script>

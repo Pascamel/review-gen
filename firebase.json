@@ -25,6 +25,10 @@
     ],
     "rewrites": [
       {
+        "source": "/all",
+        "destination": "/all.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
