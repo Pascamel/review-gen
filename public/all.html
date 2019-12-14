@@ -7,10 +7,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12">
-                    <div id="content"></div>
+                <div class="col-xs-12 text-center" id="content">
+                    <div style="margin-top: 200px">
+                        <i class="fa fa-spinner fa-spin fa-2x fa-fw" aria-hidden="true"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,24 +23,26 @@
         var getAllReviews = firebase.functions().httpsCallable('getAllReviews');
 
         getAllReviews({}).then(function(result) {
-            var n = 1, content = '';
+            var content = '<table class="table table-striped"><tr><th class="text-center">#</th><th>Reviews</th></tr>';
 
             for (var i = 0; i < result.data.reviews.length; i++) {
                 if (i%3 === 0) {
-                    content += '<h1>';
-                    content += (i/3);
-                    content += '</h1>';
+                    content += '<tr><td class="text-center"><h1>';
+                    content += 1 + i / 3;
+                    content += '</h1></td><td>';
                     content += '<ul class="list-unstyled">';
                 }
 
-                content += '<li>';
+                content += '<li style="margin-bottom: 0.5em">';
                 content += result.data.reviews[i];
                 content += '</li>';
 
                 if (i%3 === 2) {
-                    content += '</ul>';
+                    content += '</ul></td></tr>';
                 }
             }
+
+            content += '</table>';
 
             $('#content').html(content)
         });
